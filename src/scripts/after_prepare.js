@@ -10,3 +10,10 @@ if (fs.existsSync('platforms/browser/browser.json')) {
     const contents = fs.readFileSync(proxyFile).toString();
     fs.writeFileSync(proxyFile, contents.replace(/CLIENT_ID/g, CLIENT_ID).replace(/TENANT_ID/g, TENANT_ID));
 }
+
+// If our application has the windows platform installed, this is ideally where we want to configure it.
+if (fs.existsSync('platforms/windows/windows.json')) {
+    const proxyFile = 'platforms/windows/www/plugins/cordova-plugin-msal/src/windows/MsalProxy.js';
+    const contents = fs.readFileSync(proxyFile).toString();
+    fs.writeFileSync(proxyFile, contents.replace(/CLIENT_ID/g, CLIENT_ID).replace(/TENANT_ID/g, TENANT_ID));
+}

@@ -146,7 +146,18 @@
     <platform name="windows">
         <config-file target="config.xml" parent="/*">
             <preference name="windows-target-version" value="10.0" />
+            <feature name="MsalPlugin">
+                <param name="windows-package" value="MsalPlugin" />
+            </feature>
+            <preference name="tenantId" value="$TENANT_ID" />
+            <preference name="clientId" value="$CLIENT_ID" />
         </config-file>
+        <js-module src="src/windows/msal-browser.min.js" name="Msal">
+            <merges target="msal" />
+        </js-module>
+        <js-module src="src/windows/MsalProxy.js" name="MsalProxy">
+            <runs />
+        </js-module>
     </platform>
     <hook type="after_prepare" src="src/scripts/after_prepare.js" />
 </plugin>
